@@ -8,6 +8,7 @@ import java.util.Set;
 
 import com.heaven7.java.base.util.ArrayUtils;
 import com.heaven7.java.base.util.Throwables;
+import com.heaven7.java.machine.learning.MachineLearnings.Scope;
 import com.heaven7.java.machine.learning.util.ArrayIterator;
 
 import static com.heaven7.java.machine.learning.util.MathUtils.*;
@@ -31,6 +32,12 @@ public class Bayes {
 		mUniqueWords = new ArrayList<>();
 	}
 	
+	/**
+	 * classify the entry
+	 * @param testEntry the entry to classify
+	 * @return 1 represent the 1/true feature.  0 otherwise.
+	 */
+	@Scope(MachineLearnings.SCOPE_USAGE)
 	public int classify(String[] testEntry){
 		if(mResult == null){
 			throw new IllegalStateException();
@@ -42,6 +49,7 @@ public class Bayes {
 		return p1 > p0 ? 1 : 0;
 	}
 
+	@Scope(MachineLearnings.SCOPE_TRAINING)
 	public void training(List<List<Integer>> traimMat){
 		Throwables.checkEmpty(traimMat);
 		TrainResult result = new TrainResult();
@@ -95,6 +103,7 @@ public class Bayes {
 		mResult = result;
 	}
 
+	@Scope(MachineLearnings.SCOPE_PREPROCCESS)
 	public void setKeywords(String[][] words, int[] categories){
 		Throwables.checkEmpty(words);
 		Throwables.checkEmpty(categories);

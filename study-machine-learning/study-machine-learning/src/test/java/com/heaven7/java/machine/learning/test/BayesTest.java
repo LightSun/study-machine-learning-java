@@ -35,7 +35,7 @@ public class BayesTest extends TestCase{
 		// DP.println("log(2) = " + Math.log(2)); 
 	}
 	
-	public void testTrain(){
+	public void testFull(){
 		List<List<Integer>> trainMat = new ArrayList<>();
 		for(String[] words : keywords){
 			trainMat.add(bayes.mapVector(words));
