@@ -103,6 +103,11 @@ public class Bayes {
 		mResult = result;
 	}
 
+	/**
+	 * set the main data. any step result is based on this call.
+	 * @param words the base words
+	 * @param categories the category , element value is 1 or 0.
+	 */
 	@Scope(MachineLearnings.SCOPE_PREPROCCESS)
 	public void setKeywords(String[][] words, int[] categories){
 		Throwables.checkEmpty(words);
@@ -128,6 +133,11 @@ public class Bayes {
 		}
 	}
 	
+	/**
+	 * map the target words. if exist 1, 0 otherwise
+	 * @param words the words to mark
+	 * @return the marked list.
+	 */
 	//出现则为1,不出现为0. 返回标记集合 list。个数是所有唯一单词的数量
 	public List<Integer> mapVector(String[] words){
 		int[] temp = new int[mUniqueWords.size()];
