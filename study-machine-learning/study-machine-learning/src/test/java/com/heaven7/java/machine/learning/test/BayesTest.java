@@ -6,21 +6,18 @@ import java.util.List;
 
 import com.heaven7.java.base.util.DefaultPrinter;
 import com.heaven7.java.machine.learning.Bayes;
-
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
 //朴素贝叶斯概率算法测试
-public class BayesTest extends TestCase{
+public class BayesTest{
 	
-	static final DefaultPrinter DP  = DefaultPrinter.getDefault();
+	static final DefaultPrinter DP= DefaultPrinter.getDefault();
 	String[][] keywords; 
 	int[] categories;
 	
 	Bayes bayes = new Bayes();
-	
-	@Override
-	protected void setUp() throws Exception {
-		super.setUp();
+
+	protected BayesTest(){
 		keywords = new String[][]{
 			{"my", "dog", "has", "flea", "problems", "help", "please"},
              {"maybe", "not", "take", "him", "to", "dog", "park", "stupid"},
@@ -34,7 +31,8 @@ public class BayesTest extends TestCase{
 		DP.println("len = " + keywords.length); //列数
 		// DP.println("log(2) = " + Math.log(2)); 
 	}
-	
+
+	@Test
 	public void testFull(){
 		List<List<Integer>> trainMat = new ArrayList<>();
 		for(String[] words : keywords){
@@ -48,7 +46,7 @@ public class BayesTest extends TestCase{
 		entry = new String[]{"stupid", "garbage"};
 		DP.println(Arrays.toString(entry) + " ,classify = " + bayes.classify(entry));
 	}
-	
+	@Test
 	public void testMapVector(){
 		DP.println(bayes.mapVector(keywords[0]).toString());
 	}
