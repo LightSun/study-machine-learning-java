@@ -1,16 +1,13 @@
 package com.heaven7.java.algorithm.dp;
 
 import com.heaven7.java.base.anno.Nullable;
-import com.heaven7.java.base.util.Predicates;
 import com.heaven7.java.base.util.Throwables;
-import com.heaven7.java.visitor.FireVisitor;
 import com.heaven7.java.visitor.FissionVisitor;
 import com.heaven7.java.visitor.ResultIndexedVisitor;
 import com.heaven7.java.visitor.ResultVisitor;
 import com.heaven7.java.visitor.collection.VisitServices;
 import com.heaven7.java.visitor.item.IStringItem;
 
-import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -18,6 +15,12 @@ import java.util.*;
  * */
 public class MarkovModule {
 
+    public static final Comparator<Path> DEFAULT_PATH_COMPARATOR = new Comparator<Path>(){
+        @Override
+        public int compare(Path o1, Path o2) {
+            return Float.compare(o1.probability, o2.probability);
+        }
+    };
     public static final Selector DEFAULT_SELECTOR = new Selector(){
         @Override
         public Path select(int step, List<Path> nextPaths, List<Path> multiplePaths) {
@@ -25,18 +28,7 @@ public class MarkovModule {
             if(multiplePaths != null){
                 all.addAll(multiplePaths);
             }
-            return VisitServices.from(all).max(new Comparator<Path>() {
-                @Override
-                public int compare(MarkovModule.Path o1, MarkovModule.Path o2) {
-                    return Float.compare(o1.probability,o2.probability);
-                }
-            });
-        }
-    };
-    public static final Comparator<Path> DEFAULT_PATH_COMPARATOR = new Comparator<Path>(){
-        @Override
-        public int compare(Path o1, Path o2) {
-            return Float.compare(o1.probability, o2.probability);
+            return VisitServices.from(all).max(DEFAULT_PATH_COMPARATOR);
         }
     };
 
