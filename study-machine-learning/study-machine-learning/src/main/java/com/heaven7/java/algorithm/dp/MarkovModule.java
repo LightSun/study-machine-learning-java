@@ -123,7 +123,7 @@ public class MarkovModule {
         }
         return selectPath;
     }
-    //隐含马尔可夫模型 -> 反推
+    //隐含马尔可夫模型 -> 反推. (维特比算法(Viterbi))
     public List<Path> backWalk(List<State> actions){
         Throwables.checkEmpty(actions);
         //case ->action, case -> action , ...
