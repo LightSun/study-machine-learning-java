@@ -53,7 +53,7 @@ public class MarkovModuleTest {
                 return f;
             }
         });
-        //三天所做的行为分别是：散步、购物、打扫卫生
+        //三天所做的行为分别是：散步、购物、打扫卫生, 预测这3天最可能的天气
         String str = VisitServices.from(module.backWalk(Arrays.asList(new MarkovModule.SimpleState("Walk"),
                 new MarkovModule.SimpleState("Shop"),
                 new MarkovModule.SimpleState("Clean")

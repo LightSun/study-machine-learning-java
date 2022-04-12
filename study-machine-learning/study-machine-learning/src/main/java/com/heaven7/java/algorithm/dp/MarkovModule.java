@@ -12,7 +12,12 @@ import java.util.*;
 
 /**
  * 马尔可夫模型/ 隐马尔可夫模型: https://www.cnblogs.com/mantch/p/11203748.html
+ * 预测，概率。
+ * 可观测状态-》隐藏的的状态。
+ extends: log(a*b) = log(a) + log(b) 利用对数将乘法转变为加法。 提升效率
  * */
+//转移概率矩阵+生成概率矩阵
+//时间和状态都是离散的
 public class MarkovModule {
 
     public static final Comparator<Path> DEFAULT_PATH_COMPARATOR = new Comparator<Path>(){
