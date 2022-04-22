@@ -34,8 +34,8 @@ import static com.heaven7.java.visitor.PileVisitor.FLOAT_ADD;
  */
 public class HMMBaumWelchDemo {
 
-    private List<List<Float>> transition;
-    private List<List<Float>> emission;
+    private List<List<Float>> transition; //初始值-动态变化
+    private List<List<Float>> emission;   //初始值-动态变化
 
     private List<String> states;
     //private Map<String, Integer> states_dic;
