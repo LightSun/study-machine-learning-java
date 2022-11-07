@@ -9,4 +9,4 @@ a study note  of  study machine-learning
 
 ### 素数
 - 2, 3
-- p(n)= 3 * n + 5 - (n % 2). 其中 n = 0,1,2,3,4,5
+- p(n)= 3 * n + 5 - (n % 2). 其中 n = 0,1,2,...
